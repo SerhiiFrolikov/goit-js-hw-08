@@ -8,21 +8,11 @@ const CURRENT_TIME_KEY = "videoplayer-current-time";
 
 const getCurrentTime = function (currentTime) {
     const seconds = currentTime.seconds;
-    localStorage.setItem(CURRENT_TIME_KEY, JSON.stringify(seconds));
+    localStorage.setItem(CURRENT_TIME_KEY, seconds);
 };
 
-player.on('timeupdate', throttle(getCurrentTime, 1000) || 0);
+player.on('timeupdate', throttle(getCurrentTime, 1000));
 
 const getCurrentTimeKey = localStorage.getItem(CURRENT_TIME_KEY);
  
-player.setCurrentTime(JSON.parse(getCurrentTimeKey)).then(function(seconds) {
-}).catch(function(error) {
-    switch (error.name) {
-        case 'RangeError':
-            // the time was less than 0 or greater than the video’s duration
-            break;
-        default:
-            // some other error occurred
-            break;
-    }
-});
+player.setCurrentTime(JSON.parse(getCurrentTimeKey) || 0);

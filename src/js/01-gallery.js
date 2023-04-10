@@ -36,11 +36,11 @@ function onGalleryContainerClick(evt) {
         return;
     }
 }
-    const lightbox = new SimpleLightbox('.gallery a', {
-        captions: true,
-        captionPosition: 'bottom',
-        captionDelay: 250,
-        captionsData: "alt",
+new SimpleLightbox('.gallery a', {
+    captions: true,
+    captionPosition: 'bottom',
+    captionDelay: 250,
+    captionsData: "alt",
     });
 
 console.log(galleryItems);

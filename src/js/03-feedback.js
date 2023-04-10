@@ -27,6 +27,12 @@ function populateFormOutput() {
 
 function onFormSubmit(evt) {
     evt.preventDefault();
+
+    if (email.value.trim() === '' || message.value.trim() === '') {
+    alert('Please fill in all the fields!');
+    return;
+    }
+
     evt.currentTarget.reset();
     localStorage.removeItem(STORAGE_KEY);
     console.log(formData);
